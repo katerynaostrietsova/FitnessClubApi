@@ -1,0 +1,201 @@
+﻿<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Фітнес-клуб API</title>
+    <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+    <header>
+        <h1>Система обліку спортивних тренувань</h1>
+        <p>Виклик Web API за допомогою JavaScript</p>
+    </header>
+
+    <main>
+        <section class="panel">
+            <h2>Клієнти</h2>
+
+            <form id="clientForm">
+                <input id="clientFullName" placeholder="ПІБ клієнта" required>
+                <input id="clientCard" placeholder="Номер членської карти" required>
+                <input id="clientPhone" placeholder="Телефон">
+                <button type="submit">Додати клієнта</button>
+            </form>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>ПІБ</th>
+                        <th>Карта</th>
+                        <th>Телефон</th>
+                        <th>Дії</th>
+                    </tr>
+                </thead>
+                <tbody id="clientsTable"></tbody>
+            </table>
+        </section>
+
+        <section class="panel">
+            <h2>Тренери</h2>
+
+            <form id="trainerForm">
+                <input id="trainerFullName" placeholder="ПІБ тренера" required>
+                <input id="trainerExperience" type="number" placeholder="Досвід, років" required>
+                <input id="trainerSpecialization" placeholder="Спеціалізація">
+                <button type="submit">Додати тренера</button>
+            </form>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>ПІБ</th>
+                        <th>Досвід</th>
+                        <th>Спеціалізація</th>
+                        <th>Дії</th>
+                    </tr>
+                </thead>
+                <tbody id="trainersTable"></tbody>
+            </table>
+        </section>
+
+        <section class="panel">
+            <h2>Види тренувань</h2>
+
+            <form id="workoutTypeForm">
+                <input id="workoutTypeName" placeholder="Назва виду" required>
+                <input id="durationMinutes" type="number" placeholder="Тривалість, хв" required>
+
+                <label>
+                    <input id="isGroup" type="checkbox">
+                    Групове
+                </label>
+
+                <label>
+                    <input id="requiresTrainer" type="checkbox">
+                    Потребує тренера
+                </label>
+
+                <input id="workoutTypeDescription" placeholder="Опис">
+                <button type="submit">Додати вид</button>
+            </form>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Назва</th>
+                        <th>Тривалість</th>
+                        <th>Групове</th>
+                        <th>Тренер потрібен</th>
+                        <th>Дії</th>
+                    </tr>
+                </thead>
+                <tbody id="workoutTypesTable"></tbody>
+            </table>
+        </section>
+
+        <section class="panel">
+            <h2>Абонементи</h2>
+
+            <form id="subscriptionForm">
+                <select id="subscriptionClient" required></select>
+                <select id="subscriptionWorkoutType" required></select>
+                <input id="totalSessions" type="number" placeholder="Кількість тренувань" required>
+                <input id="startDate" type="date" required>
+                <input id="endDate" type="date" required>
+                <input id="price" type="number" placeholder="Ціна" required>
+                <button type="submit">Додати абонемент</button>
+            </form>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Клієнт</th>
+                        <th>Вид</th>
+                        <th>Усього</th>
+                        <th>Залишилось</th>
+                        <th>Статус</th>
+                        <th>Дії</th>
+                    </tr>
+                </thead>
+                <tbody id="subscriptionsTable"></tbody>
+            </table>
+        </section>
+
+        <section class="panel">
+            <h2>Тренування</h2>
+
+            <form id="workoutForm">
+                <select id="workoutWorkoutType" required></select>
+                <select id="workoutTrainer"></select>
+                <input id="workoutDateTime" type="datetime-local" required>
+                <input id="maxParticipants" type="number" placeholder="Кількість місць" required>
+                <button type="submit">Створити тренування</button>
+            </form>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Вид</th>
+                        <th>Тренер</th>
+                        <th>Дата і час</th>
+                        <th>Місця</th>
+                        <th>Статус</th>
+                        <th>Дії</th>
+                    </tr>
+                </thead>
+                <tbody id="workoutsTable"></tbody>
+            </table>
+        </section>
+
+        <section class="panel">
+            <h2>Записи на тренування</h2>
+
+            <form id="registrationForm">
+                <select id="registrationClient" required></select>
+                <select id="registrationWorkout" required></select>
+                <select id="registrationSubscription" required></select>
+                <input id="registrationNote" placeholder="Примітка">
+                <button type="submit">Записати клієнта</button>
+            </form>
+
+            <form id="statusForm">
+                <select id="registrationStatusId" required></select>
+
+                <select id="newStatus">
+                    <option value="Booked">Booked</option>
+                    <option value="Cancelled">Cancelled</option>
+                    <option value="Attended">Attended</option>
+                    <option value="Missed">Missed</option>
+                </select>
+
+                <input id="statusNote" placeholder="Примітка до статусу">
+                <button type="submit">Змінити статус</button>
+            </form>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Клієнт</th>
+                        <th>Вид тренування</th>
+                        <th>Дата запису</th>
+                        <th>Статус</th>
+                        <th>Примітка</th>
+                        <th>Дії</th>
+                    </tr>
+                </thead>
+                <tbody id="registrationsTable"></tbody>
+            </table>
+        </section>
+    </main>
+
+    <div id="message"></div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

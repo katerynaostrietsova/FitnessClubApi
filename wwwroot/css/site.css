@@ -1,0 +1,144 @@
+﻿* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f3f6f8;
+    color: #222;
+}
+
+header {
+    background: #243447;
+    color: white;
+    padding: 24px 40px;
+}
+
+    header h1 {
+        margin: 0 0 8px 0;
+    }
+
+    header p {
+        margin: 0;
+        opacity: 0.85;
+    }
+
+main {
+    padding: 24px;
+    display: grid;
+    gap: 24px;
+}
+
+.panel {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+    .panel h2 {
+        margin-top: 0;
+        color: #243447;
+    }
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 16px;
+    align-items: center;
+}
+
+input,
+select {
+    padding: 9px 10px;
+    border: 1px solid #cfd7df;
+    border-radius: 6px;
+    min-width: 180px;
+}
+
+label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+button {
+    padding: 10px 14px;
+    background: #2f80ed;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+    button:hover {
+        background: #1f65bd;
+    }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+}
+
+th,
+td {
+    padding: 10px;
+    border-bottom: 1px solid #e1e7ec;
+    text-align: left;
+    vertical-align: middle;
+}
+
+th {
+    background: #eef3f7;
+}
+
+.actions {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.small-btn {
+    padding: 6px 9px;
+    font-size: 13px;
+}
+
+.edit-btn {
+    background: #6c757d;
+}
+
+    .edit-btn:hover {
+        background: #555f66;
+    }
+
+.delete-btn {
+    background: #b3261e;
+}
+
+    .delete-btn:hover {
+        background: #8f1d18;
+    }
+
+#message {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    max-width: 420px;
+    padding: 14px 18px;
+    border-radius: 8px;
+    background: #243447;
+    color: white;
+    display: none;
+    z-index: 1000;
+}
+
+    #message.error {
+        background: #b3261e;
+    }
+
+    #message.success {
+        background: #1b7f3a;
+    }
